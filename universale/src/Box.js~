@@ -1,0 +1,24 @@
+import React, { useRef } from 'react'
+import { useLoader, useFrame } from '@react-three/fiber'
+import { TextureLoader } from 'three/src/loaders/TextureLoader';
+import { useBox } from '@react-three/cannon';
+
+export default function Box({ position = []}) {
+	const [ ref ] = useBox(() => ({
+		position: [0, 5, 0],
+		mass: 1
+		
+	}));
+	const [crate, stone, wood] = useLoader(TextureLoader, [
+		"crate.jpg",
+		"stone.jpg",
+		"wood.jpg"
+	])
+
+	return (
+		<mesh position = {position} ref = {ref}>
+			<boxGeometry/>
+			<meshStandardMaterial map = {crate}/>
+		</mesh>
+	)
+}
