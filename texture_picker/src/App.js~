@@ -46,7 +46,7 @@ function Model({ ...props }) {
 function Picker(){
 	const snap = useSnapshot(state)
 	return(
-		<div style = {{ display: snap.current?"block":"nonne"}}>
+		<div className="PickBar" style = {{ display: snap.current?"block":"none"}}>
 			 < HexColorPicker className="picker"
 			color = { snap.items[snap.current] }
 			onChange = {(color) => (state.items[snap.current] = color)}
@@ -67,7 +67,7 @@ function App() {
 					<ambientLight intensity={0.5}/>
 	  				<spotLight intensity = {0.3} position = {[5, 20, 20]} />
 	  				<Environment files="royal_esplanade_1k.hdr"/>
-	  			/*	<ContactShadows rotation-x={Math.PI / 2} position={[0, -0.8, 0]} opacity={0.25} width={10} height={10} blur={2} far={1} /> */
+	  				<ContactShadows rotation-x={Math.PI / 2} position={[0, -0.8, 0]} opacity={0.25} width={10} height={10} blur={2} far={1} />
 					<Model />
 	  			</Canvas>
 	  		</Suspense>
